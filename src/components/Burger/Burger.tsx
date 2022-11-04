@@ -8,7 +8,7 @@ interface countInfo {
 
 const Burger:React.FC<countInfo> = ({classname,count}) => {
   return (
-        <div className={classname}>{count}</div>
+        <div className={classname}>{count !== 0 ? count: ''}</div>
   );
 };
 

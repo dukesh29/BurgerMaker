@@ -30,7 +30,13 @@ function App() {
   ]);
 
   const BurgerDraw = ingredients.map(burger => {
-    return <Burger count={burger.count} classname={burger.name} key={burger.id}/>
+    let classname ='';
+    if(burger.count === 0) {
+      classname = '';
+    } else {
+      classname = burger.name;
+    }
+    return <Burger count={burger.count} classname={classname} key={burger.id}/>
   });
 
   const getCount = (index: number) => {
