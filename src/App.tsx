@@ -1,21 +1,16 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import meatImage from './assets/meat.png';
 import cheeseImage from './assets/cheese.png';
 import saladImage from './assets/salad.png';
 import baconImage from './assets/bacon.png';
 import Burger from "./components/Burger/Burger";
 import BurgerMaker from "./components/BurgerMaker/BurgerMaker";
+import FoodCalc from "./components/FoodCalc/FoodCalc";
 
 interface Ingredient {
   name: string;
   price: number;
   image: string;
-  id: number;
-}
-
-interface item {
-  name: string;
-  count: number;
   id: number;
 }
 
@@ -59,10 +54,22 @@ function App() {
     }));
   };
 
+  const finalPrice = ()  =>{
+    return ingredients.reduce((acc,item) => {
+      let price = ALLINGREDIENTS.find(ingredient => ingredient.id === item.id);
+      return acc + ((price?.price?? 0) * item.count);
+    },30)
+  };
+
 
   const BurgerMake = ALLINGREDIENTS.map((item) => {
-    return <BurgerMaker buttonDelete={() => buttonDelete(item.id)} buttonAdd={() => buttonAdd(item.id)}
-                        image={item.image} name={item.name} count={getCount(item.id)} key={item.id}/>
+    return <BurgerMaker
+      buttonDelete={() => buttonDelete(item.id)}
+      buttonAdd={() => buttonAdd(item.id)}
+      image={item.image}
+      name={item.name}
+      count={getCount(item.id)}
+      key={item.id}/>
   });
 
   return (
@@ -81,7 +88,7 @@ function App() {
           {BurgerDraw}
           <div className="BreadBottom"></div>
         </div>
-
+        <FoodCalc finalPrice={finalPrice()}/>
       </div>
     </div>
   );
