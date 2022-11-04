@@ -6,7 +6,10 @@ interface Props {
 
 const FoodCalc:React.FC<Props> = ({finalPrice}) => {
   return (
-    <p className="text-center"><strong>Your price: {finalPrice}</strong></p>
+    <p style={{fontSize:"20px", textTransform:"uppercase"}}
+       className="text-center">
+      <strong>Your price: {finalPrice}</strong>
+    </p>
   );
 };
 

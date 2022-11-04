@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import meatImage from './assets/meat.png';
 import cheeseImage from './assets/cheese.png';
 import saladImage from './assets/salad.png';
@@ -67,7 +67,6 @@ function App() {
     },30)
   };
 
-
   const BurgerMake = ALLINGREDIENTS.map((item) => {
     return <BurgerMaker
       buttonDelete={() => buttonDelete(item.id)}
@@ -79,12 +78,12 @@ function App() {
   });
 
   return (
-    <div className="container d-flex justify-content-around mt-5 align-items-center gap-1 flex-wrap">
-      <div className="d-flex flex-column gap-3 border border-danger border-3 rounded-2 p-2">
+    <div className="container d-flex justify-content-center mt-5 align-items-center gap-3 flex-wrap">
+      <div className="d-flex flex-column gap-3 border border-danger border-5 rounded-2" style={{padding:"36px"}}>
         <h3 className="text-center">Ingredients</h3>
         {BurgerMake}
       </div>
-      <div className="drawBurger-block border border-danger border-3 rounded-2">
+      <div className="drawBurger-block border border-danger border-5 rounded-2">
         <h3 className="text-center">Burger</h3>
         <div className="Burger">
           <div className="BreadTop">
